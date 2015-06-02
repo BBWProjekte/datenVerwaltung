@@ -7,6 +7,7 @@
 package datenverwaltung;
 
 import gui.LoginGUI;
+import gui.Registrieren;
 
 /**
  *
@@ -23,10 +24,14 @@ public class DatenVerwaltung {
     public static void main(String[] args) {
         
         LoginGUI test = new LoginGUI();
+        Registrieren register = new Registrieren();
+        
         test.setVisible(true);
         test.setBounds(500, 500, 400, 250);
-
         test.setResizable(false);
+        
+        register.setBounds(500, 500, 400, 250);
+        register.setResizable(false);
     }
     
 }
