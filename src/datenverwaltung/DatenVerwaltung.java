@@ -30,8 +30,6 @@ public class DatenVerwaltung {
         test.setBounds(500, 500, 400, 250);
         test.setResizable(false);
         
-        register.setBounds(500, 500, 400, 250);
-        register.setResizable(false);
     }
     
 }
