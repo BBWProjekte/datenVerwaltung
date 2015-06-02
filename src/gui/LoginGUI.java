@@ -141,6 +141,11 @@ public class LoginGUI extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         JButton login = new JButton();
+        Uebersicht uebr = new Uebersicht();
+        uebr.setVisible(true);
+        uebr.setBounds(500, 500, 400, 250);
+        uebr.setResizable(false);
+        
     
     }//GEN-LAST:event_jButton1ActionPerformed
 
