@@ -96,6 +96,7 @@ public class Uebersicht extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                System.out.println("lol");
                 Uebersicht uebr = new Uebersicht();
                 uebr.setVisible(true);
                 uebr.setBounds(500, 500, 400, 250);
