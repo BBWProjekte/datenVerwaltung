@@ -44,10 +44,10 @@ public class Uebersicht extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"", null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {"Artikel 1", "1", "53", "15.00"},
+                {"Artikel 2", "2", "85", "95.00"},
+                {"Artikel 3", "3", "30", "69.99"},
+                {"Artikel 4", "4", "68", "45.00"}
             },
             new String [] {
                 "Artikel", "Artikel Nr.", " Vorhandener Stck.", "Preis/Artikel"
