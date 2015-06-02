@@ -38,7 +38,7 @@ public class Uebersicht extends javax.swing.JFrame {
 
         jLabel2.setText("Übersicht");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 0;
         getContentPane().add(jLabel2, gridBagConstraints);
 
@@ -59,7 +59,7 @@ public class Uebersicht extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
         getContentPane().add(jScrollPane1, gridBagConstraints);
 
