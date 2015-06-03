@@ -8,6 +8,7 @@ package datenverwaltung;
 
 import gui.LoginGUI;
 import gui.Registrieren;
+import javax.swing.JFrame;
 
 /**
  *
@@ -29,6 +30,7 @@ public class DatenVerwaltung {
         test.setVisible(true);
         test.setBounds(500, 500, 400, 250);
         test.setResizable(false);
+        test.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         
     }
     

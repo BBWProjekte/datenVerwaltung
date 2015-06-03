@@ -143,8 +143,9 @@ public class LoginGUI extends javax.swing.JFrame {
         JButton login = new JButton();
         Uebersicht uebr = new Uebersicht();
         uebr.setVisible(true);
-        uebr.setBounds(500, 500, 400, 250);
+        uebr.setBounds(500, 500, 500, 500);
         uebr.setResizable(false);
+        
         
     
     }//GEN-LAST:event_jButton1ActionPerformed
