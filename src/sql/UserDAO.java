@@ -14,7 +14,7 @@ import java.sql.Statement;
 
 /**
  *
- * @author 5ia13jathomas
+ * @author 5ia13rimanavalan
  */
 
 
@@ -35,7 +35,7 @@ public class UserDAO {
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/", "root", "");
             Statement st = conn.createStatement();
-            st.executeUpdate("CREATE DATABASE IF NOT EXISTS jamezori");
+            st.executeUpdate("CREATE DATABASE IF NOT EXISTS  datenverwaltung");
             System.out.println("Database created !");
         } catch (Exception e) {
             e.printStackTrace();
@@ -45,7 +45,7 @@ public class UserDAO {
     private void createTable() throws ClassNotFoundException, SQLException {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/DatenVerwaltung//", "root", "");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/datenverwaltung//", "root", "");
             Statement stat = conn.createStatement();
 
             stat.execute("create table IF NOT EXISTS user(userID varchar(255),pwd varchar(255));");
@@ -63,7 +63,7 @@ public class UserDAO {
         try {
             Class.forName("com.mysql.jdbc.Driver");
 
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/DatenVerwaltung", "root", "");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/datenverwaltung", "root", "");
 
             Statement stmt = conn.createStatement();
 
@@ -92,7 +92,7 @@ public class UserDAO {
         try {
             Class.forName("com.mysql.jdbc.Driver");
 
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/DatenVerwaltung", "root", "");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/datenverwaltung", "root", "");
 
             Statement stmt = conn.createStatement();
 
@@ -101,7 +101,7 @@ public class UserDAO {
             ResultSet set = stmt.executeQuery(doesUserExist);
 
             while (set.next()) {
-                if (login.equals(set.getString("userID")) && password.equals(set.getString("pwd"))) {
+                if (login.equals(set.getString("username")) && password.equals(set.getString("pwd"))) {
                     return true;
                 }
             }

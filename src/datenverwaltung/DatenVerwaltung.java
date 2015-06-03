@@ -6,8 +6,8 @@
 
 package datenverwaltung;
 
-import gui.LoginGUI;
-import gui.Registrieren;
+import view.LoginGUI;
+import view.Registrieren;
 import javax.swing.JFrame;
 
 /**
@@ -20,17 +20,20 @@ public class DatenVerwaltung {
     
 
     /**
-     * @param args the command line arguments
+     * Main-Methode: LoginGUI wird aufgerufen,
+     * - grösse und position wird definiert
+     * - wird ersichtlich gemacht
+     * - GUI-Fenster kann man nicht grösser/kleiner machen
      */
     public static void main(String[] args) {
-        
-        LoginGUI test = new LoginGUI();
-        Registrieren register = new Registrieren();
-        
-        test.setVisible(true);
-        test.setBounds(500, 500, 400, 250);
-        test.setResizable(false);
-        test.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+        LoginGUI login = new LoginGUI();
+      
+        login.setTitle("Login");
+        login.setVisible(true);
+        login.setBounds(500, 500, 400, 250);
+        login.setResizable(false);
+        login.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         
     }
     
