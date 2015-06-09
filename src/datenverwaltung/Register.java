@@ -15,7 +15,7 @@ import sql.UserDAO;
  */
 
 public class Register {
-
+    
     private UserDAO user;
     private String username;
     private String name;
@@ -24,6 +24,14 @@ public class Register {
     private String adresse;
     private String password;
     private String errorMessage;
+    
+    public Register() throws ClassNotFoundException, SQLException{
+        
+        user = new UserDAO();
+        
+    }
+
+
 
     public String doRegister() throws ClassNotFoundException, SQLException {
         if (user.registerUser(username,name,vorname, jahrenachdergeburt, adresse, password) == false) {

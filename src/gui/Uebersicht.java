@@ -143,7 +143,7 @@ public class Uebersicht extends javax.swing.JFrame {
                 System.out.println("lol");
                 Uebersicht uebr = new Uebersicht();
                 uebr.setVisible(true);
-                uebr.setBounds(500, 500, 400, 250);
+                uebr.setBounds(500, 500, 800, 800);
                 uebr.setResizable(false);
             }
         });

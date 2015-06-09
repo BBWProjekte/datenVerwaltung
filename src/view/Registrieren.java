@@ -20,10 +20,11 @@ public class Registrieren extends javax.swing.JFrame {
     /**
      * Creates new form Registrieren
      */
-    public Register register;
+    private Register register;
 
     public Registrieren() {
         initComponents();
+        register = new Register();
     }
 
     /**

@@ -156,10 +156,18 @@ public class LoginGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       Registrieren reg = new Registrieren();
+       try
+       {
+           Registrieren reg = new Registrieren();
        reg.setVisible(true);
        reg.setBounds(500, 500, 400, 250);
-       reg.setResizable(false);
+       reg.setResizable(false); 
+       }
+       catch(Exception e)
+       {
+           
+       }
+       
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

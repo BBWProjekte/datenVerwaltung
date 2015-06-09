@@ -45,7 +45,7 @@ public class UserDAO {
     private void createTable() throws ClassNotFoundException, SQLException {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/datenverwaltung//", "root", "");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/datenverwaltung/", "root", "");
             Statement stat = conn.createStatement();
 
             stat.execute("create table IF NOT EXISTS user(username varchar(50), name varchar(255), vorname varchar(50),jahrenachdergeburt int(100), adresse varchar(255),pwd varchar(255));");
