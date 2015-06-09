@@ -5,41 +5,44 @@
  */
 package datenverwaltung;
 
-import gui.LoginGUI;
 import java.sql.SQLException;
+
 import sql.UserDAO;
+import view.LoginGUI;
+import view.Uebersicht;
 
 /**
  *
  * @author 5ia13rimanavalan
  */
 
-
 public class Login {
-    private UserDAO user;
-    private LoginGUI test = new LoginGUI();
 
+    private UserDAO user;
     private String name;
-    private String password;
+    private String pwd;
     private String errorMessage;
     private boolean isLogged = false;
+    private LoginGUI logingui;
+    private Uebersicht uebrsicht;
+    
 
-    public LoginGUI doLogin() throws ClassNotFoundException, SQLException {
-
-        if (user.loginUser(name, password) == false) {
+    public Uebersicht doLogin() throws ClassNotFoundException, SQLException {
+   
+        if (user.loginUser(name, pwd) == false) {
             errorMessage = "Username existiert nicht, bitte registrieren.";
             name = "";
-            return test;
+            return null;
         } else {
             errorMessage = "";
             isLogged = true;
-            return test;
+            return uebrsicht;
         }
     }
 
     public String logOut() {
         isLogged = false;
-        return "index.xhtml";
+        return null;
     }
 
     /**
@@ -59,15 +62,15 @@ public class Login {
     /**
      * @return the password
      */
-    public String getPassword() {
-        return password;
+    public String getPwd() {
+        return pwd;
     }
 
     /**
      * @param password the password to set
      */
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPwd(String pwd) {
+        this.pwd = pwd;
     }
 
     /**
@@ -104,5 +107,4 @@ public class Login {
     public boolean isIsLogged() {
         return isLogged;
     }
-
 }

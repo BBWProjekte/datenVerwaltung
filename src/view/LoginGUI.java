@@ -6,9 +6,15 @@
 
 package view;
 
+import datenverwaltung.Login;
 import datenverwaltung.DatenVerwaltung;
+import datenverwaltung.Register;
 import java.awt.Dimension;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
@@ -21,6 +27,10 @@ public class LoginGUI extends javax.swing.JFrame {
     /**
      * Creates new form DatenGUI
      */
+    
+    private Login login;
+    private Register register;
+    
     
     private DatenVerwaltung dv;
     public LoginGUI() {
@@ -145,11 +155,20 @@ public class LoginGUI extends javax.swing.JFrame {
     * dazu definiert
     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Uebersicht uebr = new Uebersicht();
-        uebr.setTitle("Produkt Übersicht");
-        uebr.setVisible(true);
-        uebr.setBounds(500, 500, 500, 500);
-        uebr.setResizable(false);
+        
+        try {
+            login.doLogin();
+            Uebersicht uebr = new Uebersicht();
+            uebr.setTitle("Produkt Übersicht");
+            uebr.setVisible(true);
+            uebr.setBounds(500, 500, 800, 800);
+            uebr.setResizable(false);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(LoginGUI.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         
         
     
@@ -165,11 +184,15 @@ public class LoginGUI extends javax.swing.JFrame {
     * dazu definiert
     */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       Registrieren reg = new Registrieren();
-       reg.setTitle("Registrieren");
-       reg.setVisible(true);
-       reg.setBounds(500, 500, 400, 250);
-       reg.setResizable(false);
+      
+
+        Registrieren reg = new Registrieren();
+        reg.setTitle("Registrieren");
+        reg.setVisible(true);
+        reg.setBounds(500, 500, 400, 250);
+        reg.setResizable(false);
+        reg.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

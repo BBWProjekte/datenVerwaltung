@@ -48,14 +48,14 @@ public class UserDAO {
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/datenverwaltung//", "root", "");
             Statement stat = conn.createStatement();
 
-            stat.execute("create table IF NOT EXISTS user(userID varchar(255),pwd varchar(255));");
+            stat.execute("create table IF NOT EXISTS user(username varchar(50), name varchar(255), vorname varchar(50),jahrenachdergeburt int(100), adresse varchar(255),pwd varchar(255));");
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public boolean registerUser(String username, String password) throws ClassNotFoundException, SQLException {
+    public boolean registerUser(String username, String name, String vorname, int jahrenachdergeburt, String adresse, String password) throws ClassNotFoundException, SQLException {
 
         createDatabase();
         createTable();
@@ -68,12 +68,12 @@ public class UserDAO {
             Statement stmt = conn.createStatement();
 
             String doesUserExist = "select userID from user;";
-            String strSql = "insert into user(userID,pwd) values ('" + username + "','" + password + "');";
+            String strSql = "insert into user(username, name, vorname, jahrenachdergeburt, adresse ,pwd) values ('" + username + "','" + name + "','" + vorname + "','" + jahrenachdergeburt + "','" + adresse + "''" + password + "');";
 
             ResultSet set = stmt.executeQuery(doesUserExist);
 
             while (set.next()) {
-                if (username.equals(set.getString("userID"))) {
+                if (username.equals(set.getString("username"))) {
                     return false;
                 }
             }

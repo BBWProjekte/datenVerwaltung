@@ -6,6 +6,7 @@
 
 package view;
 
+import datenverwaltung.Login;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
@@ -19,6 +20,8 @@ public class Uebersicht extends javax.swing.JFrame {
     /**
      * Creates new form Uebersicht
      */
+    
+    private Login login;
     public Uebersicht() {
         initComponents();
     }
@@ -84,6 +87,11 @@ public class Uebersicht extends javax.swing.JFrame {
         getContentPane().add(jButton3, gridBagConstraints);
 
         jButton4.setText("Logout");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
@@ -106,6 +114,10 @@ public class Uebersicht extends javax.swing.JFrame {
                 profil.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             }
         });    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        login.logOut();
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -137,7 +149,7 @@ public class Uebersicht extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                System.out.println("lol");
+      
                 Uebersicht uebr = new Uebersicht();
                 uebr.setVisible(true);
                 uebr.setBounds(500, 500, 400, 250);

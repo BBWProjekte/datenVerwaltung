@@ -3,8 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package view;
+
+import datenverwaltung.Register;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFrame;
 
 /**
  *
@@ -15,6 +20,8 @@ public class Registrieren extends javax.swing.JFrame {
     /**
      * Creates new form Registrieren
      */
+    public Register register;
+
     public Registrieren() {
         initComponents();
     }
@@ -38,10 +45,10 @@ public class Registrieren extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jTextField6 = new javax.swing.JTextField();
+        jPasswordField1 = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridBagLayout());
@@ -117,14 +124,6 @@ public class Registrieren extends javax.swing.JFrame {
         gridBagConstraints.gridy = 12;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         getContentPane().add(jLabel6, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 12;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.weightx = 1.1;
-        gridBagConstraints.weighty = 1.1;
-        gridBagConstraints.insets = new java.awt.Insets(0, 0, 1, 1);
-        getContentPane().add(jTextField5, gridBagConstraints);
 
         jButton1.setText("Registrieren");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -153,6 +152,14 @@ public class Registrieren extends javax.swing.JFrame {
         gridBagConstraints.weighty = 1.1;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 1, 1);
         getContentPane().add(jTextField6, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 12;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 1.1;
+        gridBagConstraints.weighty = 1.1;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 1, 1);
+        getContentPane().add(jPasswordField1, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -163,6 +170,23 @@ public class Registrieren extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
+        
+        try {
+            register.doRegister();
+            LoginGUI login = new LoginGUI();
+            login.setTitle("Login");
+            login.setVisible(true);
+            login.setBounds(500, 500, 400, 250);
+            login.setResizable(false);
+            login.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Registrieren.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("FAIL 1");
+        } catch (SQLException ex) {
+            System.out.println("FAIL 2");
+            Logger.getLogger(Registrieren.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -208,11 +232,11 @@ public class Registrieren extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     // End of variables declaration//GEN-END:variables
 }
