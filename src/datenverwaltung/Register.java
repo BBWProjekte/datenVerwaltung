@@ -13,9 +13,8 @@ import sql.UserDAO;
  *
  * @author Rinoy Manavalan
  */
-
 public class Register {
-    
+
     private UserDAO user;
     private String username;
     private String name;
@@ -24,29 +23,25 @@ public class Register {
     private String adresse;
     private String password;
     private String errorMessage;
-    
-    public Register() throws ClassNotFoundException, SQLException{
-        
+
+    public Register() throws ClassNotFoundException, SQLException {
+
         user = new UserDAO();
-        
+
     }
 
-
-
     public String doRegister(String username, String name, String vorname, int jahrenachdergeburt, String adresse, String password) throws ClassNotFoundException, SQLException {
-       
-        
-        if (user.registerUser(username,name,vorname, jahrenachdergeburt, adresse, password) == false) {
+
+        if (user.registerUser(username, name, vorname, jahrenachdergeburt, adresse, password) == false) {
             errorMessage = "Der Username ist schon vergeben.";
             username = "";
             return errorMessage;
-        }
-        else {
+        } else {
             username = "";
             errorMessage = "";
         }
         return "";
-        
+
     }
 
     /**

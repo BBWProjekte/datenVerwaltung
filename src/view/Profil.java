@@ -7,7 +7,7 @@ package view;
 
 /**
  *
- * @author rinoy.manavalan
+ * @author Rinoy Manavalan
  */
 public class Profil extends javax.swing.JFrame {
 

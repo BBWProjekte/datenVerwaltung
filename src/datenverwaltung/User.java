@@ -25,9 +25,7 @@ public class User {
     private String errorMessage;
 
     public User() throws ClassNotFoundException, SQLException {
-
         user = new UserDAO();
-
     }
 
     public void doRegister(String username, String name, String vorname, String alter, String adresse, String password) throws ClassNotFoundException, SQLException {
@@ -37,8 +35,7 @@ public class User {
         vorname = this.vorname;
         adresse = this.adresse;
         password = this.password;
-        
-        
+
         if (user.registerUser(username, name, vorname, jahrenachdergeburt, adresse, password) == false) {
             errorMessage = "Der Username ist schon vergeben.";
             username = "";
@@ -46,7 +43,6 @@ public class User {
             username = "";
             errorMessage = "";
         }
-      
     }
 
     /**

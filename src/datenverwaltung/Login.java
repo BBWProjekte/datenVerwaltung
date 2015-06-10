@@ -15,7 +15,6 @@ import view.Uebersicht;
  *
  * @author Rinoy Manavalan
  */
-
 public class Login {
 
     private UserDAO user;
@@ -25,15 +24,14 @@ public class Login {
     private boolean isLogged = false;
     private LoginGUI logingui;
     private Uebersicht uebrsicht;
-    
-    
-    public Login() throws ClassNotFoundException, SQLException{
-        
+
+    public Login() throws ClassNotFoundException, SQLException {
+
         user = new UserDAO();
     }
 
     public boolean doLogin(String username, String pwd) throws ClassNotFoundException, SQLException {
-   
+
         if (user.loginUser(username, pwd) == false) {
             errorMessage = "Username existiert nicht, bitte registrieren.";
             name = "";

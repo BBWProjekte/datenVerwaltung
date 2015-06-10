@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package view;
 
 import datenverwaltung.Login;
@@ -20,8 +19,8 @@ public class Uebersicht extends javax.swing.JFrame {
     /**
      * Creates new form Uebersicht
      */
-    
     private Login login;
+
     public Uebersicht() {
         initComponents();
     }
@@ -103,7 +102,7 @@ public class Uebersicht extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-            jButton1.addActionListener(new ActionListener() {
+        jButton1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Profil profil = new Profil();
@@ -149,7 +148,7 @@ public class Uebersicht extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-      
+
                 Uebersicht uebr = new Uebersicht();
                 uebr.setVisible(true);
                 uebr.setBounds(500, 500, 400, 250);

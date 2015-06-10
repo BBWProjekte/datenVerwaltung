@@ -11,13 +11,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-
 /**
  *
  * @author Rinoy Manavalan
  */
-
-
 public class UserDAO {
 
     Connection conn = null;
@@ -64,7 +61,7 @@ public class UserDAO {
             Statement stmt = conn.createStatement();
 
             String doesUserExist = "select username from user;";
-            String strSql = "INSERT INTO user(username, name, vorname, jahrenachdergeburt, adresse ,pwd) VALUES ('"+username + "','" + name + "','" + vorname + "','" + jahrenachdergeburt + "','" + adresse + "','" + password + "');";
+            String strSql = "INSERT INTO user(username, name, vorname, jahrenachdergeburt, adresse ,pwd) VALUES ('" + username + "','" + name + "','" + vorname + "','" + jahrenachdergeburt + "','" + adresse + "','" + password + "');";
 
             ResultSet set = stmt.executeQuery(doesUserExist);
 

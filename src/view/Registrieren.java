@@ -170,8 +170,7 @@ public class Registrieren extends javax.swing.JFrame {
     }//GEN-LAST:event_jTFUsernameActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-        
+
         try {
             String pwd = new String(jPFPasswort.getPassword());
             int alter = Integer.parseInt(jTFJahrenachgeburt.getText());
