@@ -13,7 +13,7 @@ import javax.swing.JFrame;
 
 /**
  *
- * @author 5ia13jethayalan
+ * @author Rinoy Manavalan
  */
 public class Registrieren extends javax.swing.JFrame {
 
@@ -22,7 +22,7 @@ public class Registrieren extends javax.swing.JFrame {
      */
     private Register register;
 
-    public Registrieren() {
+    public Registrieren() throws ClassNotFoundException, SQLException {
         initComponents();
         register = new Register();
     }
@@ -38,18 +38,18 @@ public class Registrieren extends javax.swing.JFrame {
         java.awt.GridBagConstraints gridBagConstraints;
 
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jTFUsername = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        jTFVorname = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        jTFJahrenachgeburt = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        jTFAdresse = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        jTFName = new javax.swing.JTextField();
+        jPFPasswort = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridBagLayout());
@@ -61,9 +61,9 @@ public class Registrieren extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         getContentPane().add(jLabel2, gridBagConstraints);
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        jTFUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                jTFUsernameActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -72,7 +72,7 @@ public class Registrieren extends javax.swing.JFrame {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.1;
         gridBagConstraints.weighty = 1.1;
-        getContentPane().add(jTextField1, gridBagConstraints);
+        getContentPane().add(jTFUsername, gridBagConstraints);
 
         jLabel3.setText("Vorname:");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -87,7 +87,7 @@ public class Registrieren extends javax.swing.JFrame {
         gridBagConstraints.weightx = 1.1;
         gridBagConstraints.weighty = 1.1;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 1, 1);
-        getContentPane().add(jTextField2, gridBagConstraints);
+        getContentPane().add(jTFVorname, gridBagConstraints);
 
         jLabel4.setText("Alter:");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -102,7 +102,7 @@ public class Registrieren extends javax.swing.JFrame {
         gridBagConstraints.weightx = 1.1;
         gridBagConstraints.weighty = 1.1;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 1, 1);
-        getContentPane().add(jTextField3, gridBagConstraints);
+        getContentPane().add(jTFJahrenachgeburt, gridBagConstraints);
 
         jLabel5.setText("Adresse:");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -117,7 +117,7 @@ public class Registrieren extends javax.swing.JFrame {
         gridBagConstraints.weightx = 1.1;
         gridBagConstraints.weighty = 1.1;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 1, 1);
-        getContentPane().add(jTextField4, gridBagConstraints);
+        getContentPane().add(jTFAdresse, gridBagConstraints);
 
         jLabel6.setText("Passwort:");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -144,7 +144,7 @@ public class Registrieren extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         getContentPane().add(jLabel1, gridBagConstraints);
 
-        jTextField6.setText(" ");
+        jTFName.setText(" ");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 4;
@@ -152,7 +152,7 @@ public class Registrieren extends javax.swing.JFrame {
         gridBagConstraints.weightx = 1.1;
         gridBagConstraints.weighty = 1.1;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 1, 1);
-        getContentPane().add(jTextField6, gridBagConstraints);
+        getContentPane().add(jTFName, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 12;
@@ -160,20 +160,22 @@ public class Registrieren extends javax.swing.JFrame {
         gridBagConstraints.weightx = 1.1;
         gridBagConstraints.weighty = 1.1;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 1, 1);
-        getContentPane().add(jPasswordField1, gridBagConstraints);
+        getContentPane().add(jPFPasswort, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void jTFUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFUsernameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_jTFUsernameActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
         
         try {
-            register.doRegister();
+            String pwd = new String(jPFPasswort.getPassword());
+            int alter = Integer.parseInt(jTFJahrenachgeburt.getText());
+            register.doRegister(jTFUsername.getText(), jTFName.getText(), jTFVorname.getText(), alter, jTFAdresse.getText(), pwd);
             LoginGUI login = new LoginGUI();
             login.setTitle("Login");
             login.setVisible(true);
@@ -220,7 +222,13 @@ public class Registrieren extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Registrieren().setVisible(true);
+                try {
+                    new Registrieren().setVisible(true);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(Registrieren.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Registrieren.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -233,11 +241,11 @@ public class Registrieren extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField6;
+    private javax.swing.JPasswordField jPFPasswort;
+    private javax.swing.JTextField jTFAdresse;
+    private javax.swing.JTextField jTFJahrenachgeburt;
+    private javax.swing.JTextField jTFName;
+    private javax.swing.JTextField jTFUsername;
+    private javax.swing.JTextField jTFVorname;
     // End of variables declaration//GEN-END:variables
 }

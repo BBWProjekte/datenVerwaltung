@@ -14,7 +14,7 @@ import java.sql.Statement;
 
 /**
  *
- * @author 5ia13rimanavalan
+ * @author Rinoy Manavalan
  */
 
 
@@ -35,7 +35,7 @@ public class UserDAO {
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/", "root", "");
             Statement st = conn.createStatement();
-            st.executeUpdate("CREATE DATABASE IF NOT EXISTS  datenverwaltung");
+            st.executeUpdate("CREATE DATABASE IF NOT EXISTS  datenverwaltung;");
             System.out.println("Database created !");
         } catch (Exception e) {
             e.printStackTrace();
@@ -45,21 +45,17 @@ public class UserDAO {
     private void createTable() throws ClassNotFoundException, SQLException {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/datenverwaltung/", "root", "");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/datenverwaltung", "root", "");
             Statement stat = conn.createStatement();
-
+            stat.execute("use datenverwaltung;");
             stat.execute("create table IF NOT EXISTS user(username varchar(50), name varchar(255), vorname varchar(50),jahrenachdergeburt int(100), adresse varchar(255),pwd varchar(255));");
-
+            System.out.println("Table User wurde erstellt");
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     public boolean registerUser(String username, String name, String vorname, int jahrenachdergeburt, String adresse, String password) throws ClassNotFoundException, SQLException {
-
-        createDatabase();
-        createTable();
-
         try {
             Class.forName("com.mysql.jdbc.Driver");
 
@@ -67,8 +63,8 @@ public class UserDAO {
 
             Statement stmt = conn.createStatement();
 
-            String doesUserExist = "select userID from user;";
-            String strSql = "insert into user(username, name, vorname, jahrenachdergeburt, adresse ,pwd) values ('" + username + "','" + name + "','" + vorname + "','" + jahrenachdergeburt + "','" + adresse + "''" + password + "');";
+            String doesUserExist = "select username from user;";
+            String strSql = "INSERT INTO user(username, name, vorname, jahrenachdergeburt, adresse ,pwd) VALUES ('"+username + "','" + name + "','" + vorname + "','" + jahrenachdergeburt + "','" + adresse + "','" + password + "');";
 
             ResultSet set = stmt.executeQuery(doesUserExist);
 

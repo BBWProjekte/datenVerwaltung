@@ -20,7 +20,7 @@ import javax.swing.JTextField;
 
 /**
  *
- * @author 5ia13rimanavalan
+ * @author Rinoy Manavalan
  */
 public class LoginGUI extends javax.swing.JFrame {
 
@@ -33,7 +33,10 @@ public class LoginGUI extends javax.swing.JFrame {
     
     
     private DatenVerwaltung dv;
-    public LoginGUI() {
+    public LoginGUI() throws ClassNotFoundException, SQLException {
+        register = new Register();
+        login = new Login();
+
         initComponents();
     }
 
@@ -47,20 +50,20 @@ public class LoginGUI extends javax.swing.JFrame {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        jTextField1 = new javax.swing.JTextField();
+        jTFUsername = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        jPFPwd = new javax.swing.JPasswordField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
-        jTextField1.setText(" ");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        jTFUsername.setText(" ");
+        jTFUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                jTFUsernameActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -71,7 +74,7 @@ public class LoginGUI extends javax.swing.JFrame {
         gridBagConstraints.weightx = 1.1;
         gridBagConstraints.weighty = 1.1;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        getContentPane().add(jTextField1, gridBagConstraints);
+        getContentPane().add(jTFUsername, gridBagConstraints);
 
         jLabel1.setText("Username: ");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -93,9 +96,9 @@ public class LoginGUI extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         getContentPane().add(jLabel2, gridBagConstraints);
 
-        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+        jPFPwd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField1ActionPerformed(evt);
+                jPFPwdActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -106,7 +109,7 @@ public class LoginGUI extends javax.swing.JFrame {
         gridBagConstraints.weightx = 1.1;
         gridBagConstraints.weighty = 1.1;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        getContentPane().add(jPasswordField1, gridBagConstraints);
+        getContentPane().add(jPFPwd, gridBagConstraints);
 
         jButton1.setText("Login");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -141,13 +144,12 @@ public class LoginGUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
-        JPasswordField pwd = new JPasswordField();
-       if(pwd.isValid()){
-       }
+    private void jPFPwdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPFPwdActionPerformed
+
+
         
     
-    }//GEN-LAST:event_jPasswordField1ActionPerformed
+    }//GEN-LAST:event_jPFPwdActionPerformed
 
     /* 
     * Wenn im LoginGUI der Button "Produkt Übersicht" geklickt wird, erscheint in einem
@@ -157,12 +159,18 @@ public class LoginGUI extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
         try {
-            login.doLogin();
-            Uebersicht uebr = new Uebersicht();
-            uebr.setTitle("Produkt Übersicht");
-            uebr.setVisible(true);
-            uebr.setBounds(500, 500, 800, 800);
-            uebr.setResizable(false);
+            String pwd = new String(jPFPwd.getPassword());
+            if(login.doLogin(jTFUsername.getText(), pwd)== true){
+                Uebersicht uebr = new Uebersicht();
+                uebr.setTitle("Produkt Übersicht");
+                uebr.setVisible(true);
+                uebr.setBounds(500, 500, 800, 800);
+                uebr.setResizable(false);
+            }
+            else{
+                
+            }
+            
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(LoginGUI.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -174,9 +182,9 @@ public class LoginGUI extends javax.swing.JFrame {
     
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void jTFUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFUsernameActionPerformed
 
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_jTFUsernameActionPerformed
 
     /* 
     * Wenn im LoginGUI der Button "Registrieren" geklickt wird, erscheint in einem
@@ -185,13 +193,22 @@ public class LoginGUI extends javax.swing.JFrame {
     */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
       
+        
 
-        Registrieren reg = new Registrieren();
-        reg.setTitle("Registrieren");
-        reg.setVisible(true);
-        reg.setBounds(500, 500, 400, 250);
-        reg.setResizable(false);
-        reg.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        Registrieren reg;
+        try {
+            reg = new Registrieren();
+            reg.setTitle("Registrieren");
+            reg.setVisible(true);
+            reg.setBounds(500, 500, 400, 250);
+            reg.setResizable(false);
+            reg.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(LoginGUI.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -225,7 +242,13 @@ public class LoginGUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LoginGUI().setVisible(true);
+                try {
+                    new LoginGUI().setVisible(true);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(LoginGUI.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(LoginGUI.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -235,7 +258,7 @@ public class LoginGUI extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JPasswordField jPFPwd;
+    private javax.swing.JTextField jTFUsername;
     // End of variables declaration//GEN-END:variables
 }

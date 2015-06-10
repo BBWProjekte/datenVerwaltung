@@ -13,7 +13,7 @@ import view.Uebersicht;
 
 /**
  *
- * @author 5ia13rimanavalan
+ * @author Rinoy Manavalan
  */
 
 public class Login {
@@ -26,17 +26,22 @@ public class Login {
     private LoginGUI logingui;
     private Uebersicht uebrsicht;
     
+    
+    public Login() throws ClassNotFoundException, SQLException{
+        
+        user = new UserDAO();
+    }
 
-    public Uebersicht doLogin() throws ClassNotFoundException, SQLException {
+    public boolean doLogin(String username, String pwd) throws ClassNotFoundException, SQLException {
    
-        if (user.loginUser(name, pwd) == false) {
+        if (user.loginUser(username, pwd) == false) {
             errorMessage = "Username existiert nicht, bitte registrieren.";
             name = "";
-            return null;
+            return false;
         } else {
             errorMessage = "";
             isLogged = true;
-            return uebrsicht;
+            return true;
         }
     }
 

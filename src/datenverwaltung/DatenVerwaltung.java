@@ -6,13 +6,14 @@
 
 package datenverwaltung;
 
+import java.sql.SQLException;
 import view.LoginGUI;
 import view.Registrieren;
 import javax.swing.JFrame;
 
 /**
  *
- * @author 5ia13rimanavalan
+ * @author Rinoy Manavalan
  */
 public class DatenVerwaltung {
     
@@ -25,7 +26,7 @@ public class DatenVerwaltung {
      * - wird ersichtlich gemacht
      * - GUI-Fenster kann man nicht grösser/kleiner machen
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ClassNotFoundException, SQLException {
 
         LoginGUI login = new LoginGUI();
       

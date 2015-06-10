@@ -11,7 +11,7 @@ import sql.UserDAO;
 
 /**
  *
- * @author 5ia13rimanavalan
+ * @author Rinoy Manavalan
  */
 public class User {
 
@@ -30,18 +30,23 @@ public class User {
 
     }
 
-    public void doRegister(String username, String name, String vorname, String alter, String adresse, String password) {
+    public void doRegister(String username, String name, String vorname, String alter, String adresse, String password) throws ClassNotFoundException, SQLException {
         jahrenachdergeburt = Integer.parseInt(alter);
-        this.username =us
+        username = username;
+        name = this.name;
+        vorname = this.vorname;
+        adresse = this.adresse;
+        password = this.password;
+        
+        
         if (user.registerUser(username, name, vorname, jahrenachdergeburt, adresse, password) == false) {
             errorMessage = "Der Username ist schon vergeben.";
             username = "";
-            return errorMessage;
         } else {
             username = "";
             errorMessage = "";
         }
-        return "";
+      
     }
 
     /**
