@@ -79,6 +79,20 @@ public class UserDAO {
             return false;
         }
     }
+    
+    public void getUserInfos(String username, String name, String vorname, String adresse, int alter, String passwort)throws ClassNotFoundException, SQLException {
+        Class.forName("com.mysql.jdbc.Driver");
+
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/datenverwaltung", "root", "");
+
+            Statement stmt = conn.createStatement();
+
+        username = ("select username from user;");
+        
+        
+        
+        
+    }
 
     public boolean loginUser(String login, String password) throws ClassNotFoundException, SQLException {
 

@@ -7,7 +7,7 @@ package datenverwaltung;
 
 import java.sql.SQLException;
 import view.LoginGUI;
-import view.Registrieren;
+import view.RegisterGUI;
 import javax.swing.JFrame;
 
 /**

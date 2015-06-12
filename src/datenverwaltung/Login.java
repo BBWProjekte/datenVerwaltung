@@ -9,7 +9,7 @@ import java.sql.SQLException;
 
 import sql.UserDAO;
 import view.LoginGUI;
-import view.Uebersicht;
+import view.UebersichtGUI;
 
 /**
  *
@@ -23,7 +23,7 @@ public class Login {
     private String errorMessage;
     private boolean isLogged = false;
     private LoginGUI logingui;
-    private Uebersicht uebrsicht;
+    private UebersichtGUI uebrsicht;
 
     public Login() throws ClassNotFoundException, SQLException {
 

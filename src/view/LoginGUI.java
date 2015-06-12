@@ -161,10 +161,10 @@ public class LoginGUI extends javax.swing.JFrame {
         try {
             String pwd = new String(jPFPwd.getPassword());
             if(login.doLogin(jTFUsername.getText(), pwd)== true){
-                Uebersicht uebr = new Uebersicht();
+                UebersichtGUI uebr = new UebersichtGUI();
                 uebr.setTitle("Produkt Übersicht");
                 uebr.setVisible(true);
-                uebr.setBounds(500, 500, 800, 800);
+                uebr.setBounds(500, 500, 600, 600);
                 uebr.setResizable(false);
             }
             else{
@@ -195,9 +195,9 @@ public class LoginGUI extends javax.swing.JFrame {
       
         
 
-        Registrieren reg;
+        RegisterGUI reg;
         try {
-            reg = new Registrieren();
+            reg = new RegisterGUI();
             reg.setTitle("Registrieren");
             reg.setVisible(true);
             reg.setBounds(500, 500, 400, 250);
