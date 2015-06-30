@@ -11,6 +11,8 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -49,6 +51,9 @@ public class AddArtikelGUI extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jTFArtikelnr = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTFBeschreibung = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridBagLayout());
@@ -111,7 +116,7 @@ public class AddArtikelGUI extends javax.swing.JFrame {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 14;
+        gridBagConstraints.gridy = 21;
         getContentPane().add(jButton1, gridBagConstraints);
 
         jLabel1.setText("Artikelnr: ");
@@ -131,6 +136,24 @@ public class AddArtikelGUI extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 1, 1);
         getContentPane().add(jTFArtikelnr, gridBagConstraints);
 
+        jLabel5.setText("Beschreibung");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 10;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
+        getContentPane().add(jLabel5, gridBagConstraints);
+
+        jTFBeschreibung.setColumns(20);
+        jTFBeschreibung.setRows(5);
+        jScrollPane1.setViewportView(jTFBeschreibung);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 10;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        getContentPane().add(jScrollPane1, gridBagConstraints);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -140,13 +163,18 @@ public class AddArtikelGUI extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        
-        
         try {   
+            UebersichtGUI uebersicht = new UebersichtGUI();
+            uebersicht.display();
             int artikelnr = Integer.parseInt(jTFArtikelnr.getText());
             int vorhandeneStk = Integer.parseInt(jTFVorhandeneStk.getText());
             int preis = Integer.parseInt(jTFPreis.getText());
-            if(artikel.newArtikel(jTFArtikelname.getText(),artikelnr , vorhandeneStk, preis)== true){
+            String beschreibung = jTFBeschreibung.getText();
+            if(artikel.newArtikel(jTFArtikelname.getText(),artikelnr , vorhandeneStk, preis, beschreibung)== true){
+                 JTable tbl = new JTable();
+                DefaultTableModel dtm = new DefaultTableModel(0, 0);
+                dtm.addRow(new Object[]{"title1", "start", "stop", "pause"});
+           
                 uebr = new UebersichtGUI();
                 uebr.setTitle("Übersicht");
                 uebr.setVisible(true);
@@ -154,6 +182,7 @@ public class AddArtikelGUI extends javax.swing.JFrame {
                 uebr.setResizable(false);
                 uebr.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             }
+            
 
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(AddArtikelGUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -214,8 +243,11 @@ public class AddArtikelGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTFArtikelname;
     private javax.swing.JTextField jTFArtikelnr;
+    private javax.swing.JTextArea jTFBeschreibung;
     private javax.swing.JTextField jTFPreis;
     private javax.swing.JTextField jTFVorhandeneStk;
     // End of variables declaration//GEN-END:variables
