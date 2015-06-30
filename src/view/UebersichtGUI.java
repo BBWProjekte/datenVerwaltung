@@ -9,7 +9,12 @@ import datenverwaltung.Artikel;
 import datenverwaltung.Login;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -30,6 +35,8 @@ public class UebersichtGUI extends javax.swing.JFrame {
     public UebersichtGUI() throws ClassNotFoundException, SQLException {
         initComponents();
         artikel = new Artikel();
+        display();
+        
     }
 
     /**
@@ -57,10 +64,31 @@ public class UebersichtGUI extends javax.swing.JFrame {
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
 
             new Object [][] {
-                {"Artikel 1", "2", "85", "95.00"},
-                {"Artikel 2", "2", "85", "95.00"},
-                {"Artikel 3", "3", "30", "69.99"},
-                {"Artikel 4", "4", "68", "45.00"}
+                {"", "", "", ""},
+                {"", "", "", ""},
+                {"", "", "", ""},
+                {"", "", "", ""},
+                {"", "", "", ""},
+                {"", "", "", ""},
+                {"", "", "", ""},
+                {"", "", "", ""},
+                {"", "", "", ""},
+                {"", "", "", ""},
+                {"", "", "", ""},
+                {"", "", "", ""},
+                {"", "", "", ""},
+                {"", "", "", ""},
+                {"", "", "", ""},
+                {"", "", "", ""},
+                {"", "", "", ""},
+                {"", "", "", ""},
+                {"", "", "", ""},
+                {"", "", "", ""},
+                {"", "", "", ""},
+                {"", "", "", ""},
+                {"", "", "", ""},
+                {"", "", "", ""},
+                {"", "", "", ""}
             },
             new String [] {
                 "Artikel", "Artikel Nr.", " Vorhandener Stck.", "Preis/Artikel"
@@ -85,12 +113,6 @@ public class UebersichtGUI extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
         jTable1.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
-            jTable1.getColumnModel().getColumn(1).setResizable(false);
-            jTable1.getColumnModel().getColumn(2).setResizable(false);
-            jTable1.getColumnModel().getColumn(3).setResizable(false);
-        }
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -145,17 +167,26 @@ public class UebersichtGUI extends javax.swing.JFrame {
         jButton1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ProfilGUI profil = new ProfilGUI();
-                profil.setTitle("Mein Profil");
-                profil.setVisible(true);
-                profil.setBounds(500, 500, 400, 250);
-                profil.setResizable(false);
-                profil.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                ProfilGUI profil;
+                try {
+                    profil = new ProfilGUI();
+                    profil.setTitle("Mein Profil");
+                    profil.setVisible(true);
+                    profil.setBounds(500, 500, 400, 250);
+                    profil.setResizable(false);
+                    profil.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(UebersichtGUI.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(UebersichtGUI.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
             }
         });    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-
+            
+        dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jTable1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MousePressed
@@ -165,10 +196,11 @@ public class UebersichtGUI extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
     AddArtikelGUI addArtikel;
         try {
+            dispose();
             addArtikel = new AddArtikelGUI();
             addArtikel.setTitle("Artikel hinzufügen");
             addArtikel.setVisible(true);
-            addArtikel.setBounds(500, 500, 400, 250);
+            addArtikel.setBounds(500, 500, 400, 450);
             addArtikel.setResizable(false);
             addArtikel.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         } catch (ClassNotFoundException ex) {
@@ -229,6 +261,43 @@ public class UebersichtGUI extends javax.swing.JFrame {
             }
         });
     }
+    
+    
+     public void display()
+    {
+        try
+        {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/datenverwaltung", "root", "");
+            Statement stat = conn.createStatement();
+            stat.execute("use datenverwaltung;");
+            ResultSet rs = stat.executeQuery("select * from  artikel");
+            int r=0;
+            while(rs.next())
+            {
+               ArrayList<String> artikelListe = new ArrayList<String>();
+
+               
+                String s1 = rs.getString(1);
+                int i1 = rs.getInt(2);
+                int i2 = rs.getInt(3);
+                int i3 = rs.getInt(4);
+ 
+                jTable1.setValueAt(s1,r,0);
+                jTable1.setValueAt(i1,r,1);
+                jTable1.setValueAt(i2,r,2);
+                jTable1.setValueAt(i3,r,3);
+                r++;
+            }
+
+        }
+        catch(Exception e)
+        {
+            System.out.println(e);
+        }
+
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
